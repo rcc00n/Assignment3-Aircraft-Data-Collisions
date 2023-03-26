@@ -54,17 +54,52 @@ def get_airline_cells(cells: list) -> list:
 
 
 def get_cell_values(airlines: list) -> list:
+    """
+        Returns a list of all the coordinate values in the 6th column of the first sheet of the workbook.
+
+        Args:
+        months (list): an empty list to which the coordinate values will be appended.
+
+        Returns:
+        list: a list of all the coordinate values in the second column of the first sheet of the workbook.
+    """
     for airline in firstSheet:
         airlines.append(airline[5].coordinate)
     return airlines
 
 
 def get_cells_and_airlines(incident_airlines: list, airline_cells: list) -> list:
+    """
+       Returns a list of lists, where each list contains a coordinate value from the 6th column of the first sheet
+    of the workbook and its corresponding value from the same row in the third column.
+
+       Args:
+       incident_months (list): an empty list to which the coordinate
+    values from the second column will be appended.
+       month_cells (list): an empty list to which the values from
+    the third column will be appended.
+
+       Returns:
+       list: a list of lists, where each list contains a coordinate value from the second column of the first sheet
+    of the workbook and its corresponding value from the same row in the third column.
+    """
     return list(
         zip(get_cell_values(incident_airlines), get_airline_cells(airline_cells)))
 
 
 def get_count_of_airlines(list_cells_airlines: list) -> list:
+    """
+        Returns a list of lists, where each sublist contains a unique value from the second column of the first sheet
+    of the workbook and its count in the column.
+
+        Args:
+        list_cells_months (list): a list of lists, where each list contains a coordinate value from the second column
+    of the first sheet of the workbook and its corresponding value from the same row in the third column.
+
+        Returns:
+        list: a list of lists, where each sublist contains a unique value from the second column of the first sheet
+    of the workbook and its count in the column.
+    """
     airlines = [list_cells_airlines[i][1]
                 for i in range(len(list_cells_airlines))]
 
