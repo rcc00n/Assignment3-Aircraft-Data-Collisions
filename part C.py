@@ -16,7 +16,7 @@ Requirements:
     - openpyxl library
 
 Inputs:
-    - smallAircraftData.xlsx: A Microsoft Excel workbook containing aircraft collision data
+    - aircraftWildlifeStrikes.xlsx: A Microsoft Excel workbook containing aircraft collision data
 
 Outputs:
     - ChartForMonths worksheet: A new worksheet in the input workbook containing a bar chart showing the
@@ -37,7 +37,7 @@ the frequency of each month in the Incident Month column
 from openpyxl import load_workbook
 from openpyxl.chart import Reference, BarChart
 
-workbook = load_workbook("smallAircraftData.xlsx")
+workbook = load_workbook("aircraftWildlifeStrikes.xlsx")
 sheet2 = workbook.create_sheet(title="ChartForMonths")
 
 firstSheet = workbook[workbook.sheetnames[0]]
@@ -45,7 +45,7 @@ firstSheet = workbook[workbook.sheetnames[0]]
 
 def get_month_cells(cells: list) -> list:
     """
-       Returns a list of all the values in the second column of the first sheet of the workbook.
+       Returns a list of all the values in the 3rd column of the first sheet of the workbook.
 
        Args:
        cells (list): an empty list to which the values will be appended.
@@ -60,7 +60,7 @@ def get_month_cells(cells: list) -> list:
 
 def get_cell_values(months: list) -> list:
     """
-        Returns a list of all the coordinate values in the second column of the first sheet of the workbook.
+        Returns a list of all the coordinate values in the 3rd column of the first sheet of the workbook.
 
         Args:
         months (list): an empty list to which the coordinate values will be appended.
@@ -75,7 +75,7 @@ def get_cell_values(months: list) -> list:
 
 def get_cells_and_months(incident_months: list, month_cells: list) -> list:
     """
-       Returns a list of tuples, where each tuple contains a coordinate value from the second column of the first sheet
+       Returns a list of lists, where each list contains a coordinate value from the 3rd column of the first sheet
     of the workbook and its corresponding value from the same row in the third column.
 
        Args:
@@ -85,7 +85,7 @@ def get_cells_and_months(incident_months: list, month_cells: list) -> list:
     the third column will be appended.
 
        Returns:
-       list: a list of tuples, where each tuple contains a coordinate value from the second column of the first sheet
+       list: a list of lists, where each list contains a coordinate value from the second column of the first sheet
     of the workbook and its corresponding value from the same row in the third column.
     """
 
@@ -133,4 +133,4 @@ chart1.add_data(data)
 chart1.set_categories(cats)
 chart1.legend = None
 sheet2.add_chart(chart1, "C1")
-workbook.save("smallAircraftData.xlsx")
+workbook.save("aircraftWildlifeStrikes.xlsx")
