@@ -38,6 +38,16 @@ firstSheet = workbook[workbook.sheetnames[0]]
 
 
 def get_airline_cells(cells: list) -> list:
+   """
+       Returns a list of all the values in the 6th column of the first sheet of the workbook.
+       
+       Args:
+       cells (list): an empty list to which the values will be appended.
+       Returns:
+       
+       list: a list of all the values in the second column of the first sheet of the workbook.
+    """
+    
     for column_values in firstSheet:
         cells.append(column_values[5].value)
     return cells
