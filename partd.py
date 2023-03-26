@@ -45,7 +45,7 @@ def get_airline_cells(cells: list) -> list:
        cells (list): an empty list to which the values will be appended.
        Returns:
        
-       list: a list of all the values in the second column of the first sheet of the workbook.
+       list: a list of all the values in the 6th column of the first sheet of the workbook.
     """
     
     for column_values in firstSheet:
@@ -61,7 +61,7 @@ def get_cell_values(airlines: list) -> list:
         months (list): an empty list to which the coordinate values will be appended.
 
         Returns:
-        list: a list of all the coordinate values in the second column of the first sheet of the workbook.
+        list: a list of all the coordinate values in the 6th column of the first sheet of the workbook.
     """
     for airline in firstSheet:
         airlines.append(airline[5].coordinate)
@@ -80,7 +80,7 @@ def get_cells_and_airlines(incident_airlines: list, airline_cells: list) -> list
     the third column will be appended.
 
        Returns:
-       list: a list of lists, where each list contains a coordinate value from the second column of the first sheet
+       list: a list of lists, where each list contains a coordinate value from the 6th column of the first sheet
     of the workbook and its corresponding value from the same row in the third column.
     """
     return list(
@@ -89,11 +89,11 @@ def get_cells_and_airlines(incident_airlines: list, airline_cells: list) -> list
 
 def get_count_of_airlines(list_cells_airlines: list) -> list:
     """
-        Returns a list of lists, where each sublist contains a unique value from the second column of the first sheet
+        Returns a list of lists, where each sublist contains a unique value from the 6th column of the first sheet
     of the workbook and its count in the column.
 
         Args:
-        list_cells_months (list): a list of lists, where each list contains a coordinate value from the second column
+        list_cells_months (list): a list of lists, where each list contains a coordinate value from the 6th column
     of the first sheet of the workbook and its corresponding value from the same row in the third column.
 
         Returns:
