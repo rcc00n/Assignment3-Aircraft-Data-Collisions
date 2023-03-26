@@ -37,7 +37,7 @@ year and the count of its occurrences in the list.
 from openpyxl import load_workbook
 from openpyxl.chart import Reference, BarChart
 
-workbook = load_workbook("smallAircraftData.xlsx")
+workbook = load_workbook("aircraftWildlifeStrikes.xlsx")
 sheet2 = workbook.create_sheet(title="ChartForYears")
 
 firstSheet = workbook[workbook.sheetnames[0]]
@@ -45,13 +45,13 @@ firstSheet = workbook[workbook.sheetnames[0]]
 
 def get_year_cells(cells: list) -> list:
     """
-        Returns a list of years from the first column of the first sheet.
+        Returns a list of years from the 2nd column of the first sheet.
 
         Args:
             cells (list): An empty list to store the years.
 
         Returns:
-            A list of years from the first column of the first sheet.
+            A list of years from the 2nd column of the first sheet.
     """
     for column_values in firstSheet:
         cells.append(column_values[1].value)
@@ -75,14 +75,14 @@ def get_cell_values(years: list) -> list:
 
 def get_cells_and_years(incident_years: list, year_cells: list) -> list:
     """
-        Returns a list of tuples containing cell coordinates and corresponding years.
+        Returns a list of lists containing cell coordinates and corresponding years.
 
         Args:
             incident_years (list): An empty list to store the incident years.
             year_cells (list): An empty list to store the year cell coordinates.
 
         Returns:
-            A list of tuples containing cell coordinates and corresponding years.
+            A list of lists containing cell coordinates and corresponding years.
     """
     return list(
         zip(get_cell_values(incident_years), get_year_cells(year_cells)))
@@ -125,4 +125,4 @@ chart1.add_data(data)
 chart1.set_categories(cats)
 chart1.legend = None
 sheet2.add_chart(chart1, "C1")
-workbook.save("smallAircraftData.xlsx")
+workbook.save("aircraftWildlifeStrikes.xlsx")
