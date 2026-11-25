@@ -38,7 +38,7 @@ firstSheet = workbook[workbook.sheetnames[0]]
 
 
 def get_airline_cells(cells: list) -> list:
-   """
+    """
        Returns a list of all the values in the 6th column of the first sheet of the workbook.
        
        Args:
